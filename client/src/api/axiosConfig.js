@@ -1,7 +1,14 @@
 import axios from 'axios';
 
+const DEFAULT_API_URL = 'https://vendecercaapi.onrender.com/api/v1/';
+
+const normalizeApiUrl = (url) => {
+  const cleanUrl = (url || DEFAULT_API_URL).trim().replace(/\/+$/, '');
+  return cleanUrl.endsWith('/api/v1') ? `${cleanUrl}/` : `${cleanUrl}/api/v1/`;
+};
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'https://vendecercaapi.onrender.com/api/v1/',
+  baseURL: normalizeApiUrl(import.meta.env.VITE_API_URL),
   headers: {
     'Content-Type': 'application/json',
   },

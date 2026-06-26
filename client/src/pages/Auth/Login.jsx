@@ -22,6 +22,11 @@ const Login = () => {
       // Como el backend solo provee CRUD básico, traemos los usuarios y verificamos
       const response = await api.get('/usuarios');
       const usuarios = response.data;
+
+      if (!Array.isArray(usuarios)) {
+        console.error('Respuesta inesperada al consultar usuarios:', usuarios);
+        throw new Error('La API no devolvio una lista de usuarios');
+      }
       
       const usuarioValido = usuarios.find(
         (u) => u.usuNombre === formData.username && u.usuPassword === formData.password
@@ -113,3 +118,4 @@ const Login = () => {
 };
 
 export default Login;
+
