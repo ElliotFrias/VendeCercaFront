@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "serve -s dist -l tcp://0.0.0.0:$PORT"
   },
   "dependencies": {
     "axios": "^1.18.0",
@@ -15,7 +16,8 @@
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
     "react-router-dom": "^7.18.0",
-    "zustand": "^5.0.14"
+    "zustand": "^5.0.14",
+    "serve": "^14.2.5"
   },
   "devDependencies": {
     "@babel/core": "^7.29.0",
